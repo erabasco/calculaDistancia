@@ -14,3 +14,4 @@ Instalé https://github.com/perliedman/leaflet-control-geocoder plugin y ahora f
 * https://www.danielprimo.io/podcast/35
 
 ### Error: nosniff https://stackoverflow.com/questions/18337630/what-is-x-content-type-options-nosniff
+
