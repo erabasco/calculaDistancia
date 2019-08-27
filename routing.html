@@ -1,0 +1,53 @@
+<!--
+    https://mappinggis.com/2014/06/mejores-plugins-para-leaflet/#Rutas
+    http://mappinggis.com/2016/08/calculo-de-rutas-en-un-mapa-web-de-leaflet/
+    https://www.liedman.net/leaflet-routing-machine/tutorials/integration/
+
+    Error L.Geodecoder not defined: Instalé https://github.com/perliedman/leaflet-control-geocoder plugin y ahora funciona
+
+    https://www.youtube.com/watch?v=MDTIhWvIcDs -> video explicativo (muy importante)
+    
+    https://www.danielprimo.io/podcast/35
+
+    Error: nosniff https://stackoverflow.com/questions/18337630/what-is-x-content-type-options-nosniff
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+
+        
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
+        <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+        <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+        <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+        <link rel="stylesheet" href="estilos.css" type="text/css">
+    </head>
+    <body>
+
+            <div id="map" class="w3-container w3-animate-zoom w3-blue-gray w3-opacity-min"></div>
+
+        <script>
+       L.Routing.control({
+        waypoints: [
+            L.latLng(57.74, 11.94),
+            L.latLng(57.6792, 11.949)
+        ],
+        routeWhileDragging: true,
+        //geocoder: L.Control.Geocoder.nominatim()
+        geocoder: L.Control.Geocoder.Routing()
+    })
+    .on('routesfound', function(e) {
+        var routes = e.routes;
+        alert('Found ' + routes.length + ' route(s).');
+    })
+    .addTo(map);
+        </script>
+        
+
+    </body>
+</html>

@@ -1,0 +1,91 @@
+<!-- 
+    https://leafletjs.com/reference-1.5.0.html#crs-distance
+    http://mappinggis.com/2016/08/calculo-de-rutas-en-un-mapa-web-de-leaflet/
+    
+-->
+<!DOCTYPE html>
+<html>
+    <title>Sistema de ordenadores para la WIFI </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+
+    <link rel="stylesheet" href="estilos.css" type="text/css">
+
+    <body class="w3-light-grey">
+
+        <!-- !PAGE CONTENT! -->
+        <div class="w3-main">  
+
+            <div class="w3-panel">
+
+                    <div class="w3-container">
+                       
+                        Avenida Arroyo del Moro s/n
+                        14011 – Córdoba.<br>
+                        Teléfono: 957 73 49 00
+                        Fax:      957 73 49 01
+                        <br><br>
+                        <!-- Contenido CONTACTO -->
+                        <div id="map" class="w3-container w3-animate-zoom w3-blue-gray w3-opacity-min"></div>
+                        <script>
+
+                            var fdez = [37.8750437,-4.775979], cadiz = [37.8673291,-4.7826948];
+
+                            var longitud = 37.8750437;
+                            var latitud = -4.775979;
+                            var map = L.map('map').setView([longitud,latitud], 18);
+
+                            L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                              attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
+                                maxZoom: 20
+                            }).addTo(map);
+
+                            L.control.scale().addTo(map);
+                            L.marker([37.891743, -4.7998776], {draggable: true}).addTo(map);
+
+                            
+                            var marker = L.marker([longitud, latitud]).addTo(map); // marcador
+                            // circulo transparente
+                            var circle = L.circle([longitud, latitud], {
+                                        color: 'red',
+                                        fillColor: '#f03',
+                                        fillOpacity: 0.5,
+                                        radius: 15
+                                    }).addTo(map);
+
+                            // distancia entre dos puntos
+                            var latlng1 = L.latLng(longitud, latitud);
+                            var latlng2 = L.latLng(37.8673291, -4.7826948);
+
+                                    
+
+                            var distancia = map.distance(latlng1,latlng2);
+                        
+                            alert(distancia);
+                            console.log(distancia);
+
+                        </script>
+                    </div> 
+
+                   
+                
+            </div>
+            <!-- End page content -->
+
+
+            <script src="librerias/jquery-3.3.1.min.js"></script>
+            <script src="librerias/jquery-ui/jquery-ui.min.js"></script>
+            <script src="librerias/jquery-validate/dist/jquery.validate.min.js"></script>
+            <!-- <script src="../librerias/jquery-validate/dist/localization/messages_es.min.js"></script> -->
+<!--            <script src="librerias/bootstrap/js/bootstrap.min.js"></script> -->
+            <script src="librerias/fontawesome/js/all.min.js"></script>
+            <script src="librerias/DataTables/datatables.min.js"></script>
+            <script src="librerias/sweetalert2.js"></script>
+
+            <script src="main.js"></script>
+
+    </body>
+</html>
